@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.time.Duration;
 
@@ -59,6 +60,18 @@ class IndexControllerTest {
 
             System.out.println("I got here 2342342342342");
         });
+    }
+    
+    @Test
+    void testAssumptionTrue() {
+
+        assumeTrue("GURU".equalsIgnoreCase(System.getenv("GURU_RUNTIME")));
+    }
+
+    @Test
+    void testAssumptionTrueAssumptionIsTrue() {
+
+        assumeTrue("GURU".equalsIgnoreCase("GURU"));
     }
 
 }
