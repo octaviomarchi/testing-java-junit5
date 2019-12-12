@@ -5,11 +5,11 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@Tag("model")
-class OwnerTest {
+import guru.springframework.sfgpetclinic.ModelTests;
+
+class OwnerTest implements ModelTests {
 
 	@Test
 	void dependentAssertions() {
@@ -19,14 +19,13 @@ class OwnerTest {
 		owner.setTelephone("1231231234");
 
 		assertAll("Properties Test",
-                () -> assertAll("Person Properties",
-                        () -> assertEquals("Joe", owner.getFirstName(), "First Name Did not Match"),
-                        () -> assertEquals("Buck", owner.getLastName())),
-                () -> assertAll("Owner Properties",
-                        () -> assertEquals("Key West", owner.getCity(), "City Did Not Match"),
-                        () -> assertEquals("1231231234", owner.getTelephone())
-                ));
-		
+				() -> assertAll("Person Properties",
+						() -> assertEquals("Joe", owner.getFirstName(), "First Name Did not Match"),
+						() -> assertEquals("Buck", owner.getLastName())),
+				() -> assertAll("Owner Properties",
+						() -> assertEquals("Key West", owner.getCity(), "City Did Not Match"),
+						() -> assertEquals("1231231234", owner.getTelephone())));
+
 		assertThat(owner.getCity(), is("Key West"));
 	}
 
