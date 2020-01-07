@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import guru.springframework.sfgpetclinic.ModelTests;
 
@@ -27,6 +29,12 @@ class OwnerTest implements ModelTests {
 						() -> assertEquals("1231231234", owner.getTelephone())));
 
 		assertThat(owner.getCity(), is("Key West"));
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"Spring", "Framework", "Guru"})
+	void testValueSource(String val) {
+		System.out.println(val);
 	}
 
 }
